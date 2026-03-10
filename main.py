@@ -16,6 +16,49 @@ from datetime import datetime
 
 # ─────────────────────────────────────────────────────────────────────────────
 
+# PROTECTION PAR MOT DE PASSE
+
+# ─────────────────────────────────────────────────────────────────────────────
+
+MOT_DE_PASSE = “ingenia2026”   # ← Changez ce mot de passe si vous le souhaitez
+
+def verifier_acces():
+if “acces_autorise” not in st.session_state:
+st.session_state[“acces_autorise”] = False
+
+```
+if not st.session_state["acces_autorise"]:
+    st.markdown("""
+    <style>
+    .login-box { max-width:380px; margin:80px auto; background:white;
+                 border-radius:16px; padding:2.5rem; box-shadow:0 8px 32px rgba(0,0,0,.12); }
+    .login-title { font-family:'DM Serif Display',serif; font-size:1.8rem;
+                   color:#1E3A5F; text-align:center; margin-bottom:.3rem; }
+    .login-sub { color:#64748B; font-size:.88rem; text-align:center; margin-bottom:1.5rem; }
+    </style>
+    <div class="login-box">
+        <div style="text-align:center;font-size:2.5rem;">🏥</div>
+        <div class="login-title">INGENIA</div>
+        <div class="login-sub">Assistant Clinique Intelligent<br>Accès réservé · Fabien Barnier 2026</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    mdp = st.text_input("🔑 Mot de passe", type="password", placeholder="Entrez le mot de passe...")
+    col1, col2 = st.columns([1, 1])
+    if col1.button("Accéder à INGENIA", use_container_width=True, type="primary"):
+        if mdp == MOT_DE_PASSE:
+            st.session_state["acces_autorise"] = True
+            st.rerun()
+        else:
+            st.error("❌ Mot de passe incorrect.")
+    st.caption("⚠️ Application réservée à l'usage professionnel du titulaire.")
+    st.stop()
+```
+
+verifier_acces()
+
+# ─────────────────────────────────────────────────────────────────────────────
+
 # BASE DE CONNAISSANCES MÉDICALES
 
 # ─────────────────────────────────────────────────────────────────────────────
