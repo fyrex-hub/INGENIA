@@ -20,7 +20,7 @@ from datetime import datetime
 
 # ─────────────────────────────────────────────────────────────────────────────
 
-MOT_DE_PASSE = “ingenia2026”   # ← Changez ce mot de passe si vous le souhaitez
+MOT_DE_PASSE = "ingenia2026"  # ← Changez ce mot de passe si vous le souhaitez
 
 def verifier_acces():
 if “acces_autorise” not in st.session_state:
